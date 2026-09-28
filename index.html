@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#05070b">
+<title>BADAK APPS V3</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- INTRO -->
+<section id="intro" class="intro">
+  <video id="introVideo" class="introVideo" autoplay muted playsinline preload="auto"></video>
+  <div class="introOverlay"></div>
+  <div class="introTop">
+    <div class="introLogo">💥 <b>BADAK APPS V3</b></div>
+    <div class="introActions">
+      <button id="musicBtn" class="glassBtn">🔇 MUSIK</button>
+      <button id="skipBtn" class="glassBtn skip">LEWATI</button>
+    </div>
+  </div>
+  <div class="introCenter">
+    <div class="pulseRhino">🔥</div>
+    <h1>BADAK APPS <span>V3</span></h1>
+    <p>Menyiapkan dashboard...</p>
+    <div class="introProgress"><i id="introProgress"></i></div>
+    <small id="introSeconds">15</small>
+  </div>
+  <div class="introHint">Tunggu sebentar • tekan LEWATI untuk langsung masuk</div>
+</section>
+<audio id="bgMusic" loop preload="auto"></audio>
+
+<div id="app" class="app hidden">
+<header class="topbar">
+  <button id="menuBtn" class="topIcon">☰</button>
+  <div class="topBrand"><span>💢</span><div><b>BADAK APPS</b><small>V3 DASHBOARD</small></div></div>
+  <button id="profileQuick" class="miniAvatar">👤</button>
+</header>
+
+<aside id="sideMenu" class="sideMenu">
+  <div class="sideHead"><b>BADAK MENU</b><button id="closeMenu">×</button></div>
+  <div class="clockCard"><div id="clock">00:00:00</div><div id="date">-</div></div>
+  <button class="sideItem active" data-page="dashboard">🏠 <span>Dashboard Badak</span></button>
+  <button class="sideItem" data-page="announcement">📢 <span>Pengumuman</span></button>
+  <button class="sideItem" data-page="games">🎮 <span>Game Ludo & Catur</span></button>
+  <button class="sideItem" data-page="profile">👤 <span>Profil</span></button>
+  <button id="logoutBtn" class="sideItem danger">↪ <span>Logout</span></button>
+</aside>
+<div id="backdrop" class="backdrop"></div>
+
+<main>
+<section id="dashboard" class="page active">
+  <div class="dashboardPhotoWrap">
+    <img class="dashboardPhoto" src="media/dashboard-photo.jpg" alt="Foto BADAK APPS">
+    <div class="photoGlow"></div>
+  </div>
+  <div class="welcomeCard">
+    <div><span class="tag">BADAK WA</span><h1>BADAK APPS V3 🦏</h1><p>Masukkan nomor dan pilih jumlah Badak yang tersedia.</p></div>
+    <div class="bigRhino">💢</div>
+  </div>
+
+  <div class="panel">
+    <label for="numberInput">Nomor</label>
+    <input id="numberInput" inputmode="numeric" autocomplete="tel" placeholder="Contoh: 628xxxxxxxxxx">
+    <label>Pilih salah satu</label>
+    <div class="badakGrid" id="badakOptions">
+      <button data-count="20">20 BADAK</button><button data-count="30">30 BADAK</button>
+      <button data-count="70">70 BADAK</button><button data-count="100">100 BADAK</button>
+      <button data-count="130">130 BADAK</button><button data-count="190">190 BADAK</button>
+      <button data-count="399">399 BADAK</button>
+    </div>
+    <div class="hint">Silahkan pilih salah satu</div>
+    <button id="confirmBtn" class="primaryBtn">⚡ KONFIRMASI</button>
+
+    <div id="processBox" class="processBox hidden">
+      <div class="loaderRhino">💢</div>
+      <h3>Tunggu sebentar</h3>
+      <p>Proses Badak masih berlanjut...</p>
+      <div class="progress"><i id="processProgress"></i></div>
+      <strong id="percent">0%</strong>
+    </div>
+    <div id="successBox" class="successBox hidden">
+      <div class="successIcon">✓</div>
+      <h2>BADAK SUKSES ✅</h2>
+      <p id="successText">Proses selesai.</p>
+    </div>
+  </div>
+
+  <div class="statsGrid">
+    <div><b id="successCount">0</b><span>SUKSES</span></div>
+    <div><b id="failCount">0</b><span>GAGAL</span></div>
+    <div><b id="totalCount">0</b><span>TOTAL</span></div>
+  </div>
+</section>
+
+<section id="announcement" class="page">
+  <div class="sectionTitle"><span>📢</span><div><h2>Pengumuman</h2><p>Informasi penting BADAK APPS</p></div></div>
+  <div class="announcementCard">
+    <div class="noticeIcon">!</div>
+    <h3>Jika web bermasalah</h3>
+    <p>Silakan hubungi admin <b>CEO RAFFSTR JOKI ELITE</b> melalui nomor khusus di bawah.</p>
+    <a class="waBtn" href="https://wa.me/6283817546555" target="_blank" rel="noopener">💬 HUBUNGI ADMIN</a>
+    <small>Nomor khusus: 6283817546555</small>
+  </div>
+</section>
+
+<section id="games" class="page">
+  <div class="sectionTitle"><span>🎮</span><div><h2>Game Teman</h2><p>Main bergantian di satu perangkat</p></div></div>
+  <div class="gameTabs"><button class="gameTab active" data-game="ludo">🎲 Ludo</button><button class="gameTab" data-game="chess">♟️ Catur</button></div>
+
+  <div id="ludoGame" class="gameCard">
+    <div class="gameHead"><div><b>LUDO MINI</b><small id="ludoTurn">Giliran Merah</small></div><button id="ludoReset" class="smallBtn">Reset</button></div>
+    <div class="ludoBoard" id="ludoBoard"></div>
+    <div class="diceRow"><button id="rollDice" class="diceBtn">🎲 KOCOK DADU</button><div id="diceResult">-</div></div>
+    <p class="gameNote">Demo lokal 2–4 pemain. Tekan dadu, lalu pion yang aktif akan bergerak otomatis.</p>
+  </div>
+
+  <div id="chessGame" class="gameCard hidden">
+    <div class="gameHead"><div><b>CATUR CLASSIC</b><small id="chessTurn">Giliran Putih</small></div><button id="chessReset" class="smallBtn">Reset</button></div>
+    <div id="chessBoard" class="chessBoard"></div>
+    <p class="gameNote">Catur 2 pemain lokal. Klik bidak lalu klik kotak tujuan. Gerakan dasar bidak didukung.</p>
+  </div>
+</section>
+
+<section id="profile" class="page">
+  <div class="sectionTitle"><span>👤</span><div><h2>Profil</h2><p>Atur profil dan lihat aktivitas Badak</p></div></div>
+  <div class="profileCard">
+    <img id="profilePhoto" src="media/dashboard-photo.jpg" alt="Profil">
+    <div><h2 id="profileName">BADAK USER</h2><p>Member BADAK APPS V3</p></div>
+    <button id="changePhotoBtn" class="outlineBtn">🖼️ UBAH FOTO PROFIL</button>
+    <input id="photoInput" type="file" accept="image/*" hidden>
+    <button id="changeNameBtn" class="outlineBtn">✏️ GANTI NAMA</button>
+  </div>
+  <div class="detailCard"><h3>🔐 Detail Login</h3><p>Status: <b class="online">ONLINE</b></p><p>Perangkat: Browser</p><p>Terakhir aktif: <span id="lastLogin">-</span></p></div>
+  <div class="historyCard"><div class="historyHead"><h3>📜 Riwayat Badak</h3><button id="clearHistory" class="smallBtn">Bersihkan</button></div><div id="historyList"></div></div>
+</section>
+</main>
+
+<nav class="bottomNav">
+  <button data-page="dashboard" class="navItem active">🏠<span>Dashboard</span></button>
+  <button data-page="games" class="navItem">🎮<span>Game</span></button>
+  <button data-page="announcement" class="navItem">📢<span>Info</span></button>
+  <button data-page="profile" class="navItem">👤<span>Profil</span></button>
+</nav>
+<div id="toast"></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
